@@ -1,7 +1,12 @@
+body {
+    font-family: "Outfit", serif;
+}
+
 header, .container {
     width: 80%;
     max-width: 600px;
     margin: 0 auto;
+    font-size: 1.5rem;
 }
 
 .drawing-canvas {
@@ -9,9 +14,8 @@ header, .container {
     border: 2px solid #000;
     border-radius: 4px;
     width: 80%;
-    height: 70vh;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    height: 68vh;
+    margin: 0 auto 30px;
     cursor: crosshair;
 }
 
@@ -20,6 +24,7 @@ header, .container {
     background-color: saddlebrown;
     color: whitesmoke;
     border: none;
+    font-family: "Outfit", serif;
     font-size: 1.2rem;
     font-weight: 700;
     border-radius: 4px;
