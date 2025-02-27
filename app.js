@@ -15,7 +15,7 @@ canvasEl.addEventListener("mousedown", function(event) {
     isDrawing = true
     lastX = event.offsetX
     lastY = event.offsetY
-    drawDot(lastX, lastY)
+    drawPoint(lastX, lastY)
 })
 
 canvasEl.addEventListener("mousemove", function(event) {
