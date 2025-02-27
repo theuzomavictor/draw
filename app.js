@@ -5,17 +5,24 @@ const ctx = canvasEl.getContext("2d")
 const clearEl = document.getElementById("clearButton")
 
 let isDrawing = false
+let lastX = 0
+let lastY = 0
+
 
 // MOUSE EVENTS
 
 canvasEl.addEventListener("mousedown", function(event) {
     isDrawing = true
-    drawDot(event.offsetX, event.offsetY)
+    lastX = event.offsetX
+    lastY = event.offsetY
+    drawDot(lastX, lastY)
 })
 
 canvasEl.addEventListener("mousemove", function(event) {
     if (isDrawing) {
-        drawDot(event.offsetX, event.offsetY)
+        drawLine(lastX, lastY, event.offsetX, event.offsetY)
+        lastX = event.offsetX
+        lastY = event.offsetY
     }
 })
 
@@ -33,7 +40,9 @@ canvasEl.addEventListener("touchstart", function(event) {
     isDrawing = true
 
     const touch = event.touches[0]
-    drawDot(touch.clientX - canvasEl.offsetLeft, touch.clientY - canvasEl.offsetTop)
+    lastX = touch.clientX - canvasEl.offsetLeft
+    lastY = touch.clientY - canvasEl.offsetTop
+    drawPoint(lastX, lastY)
 
     event.preventDefault()
 })
@@ -41,7 +50,11 @@ canvasEl.addEventListener("touchstart", function(event) {
 canvasEl.addEventListener("touchmove", function(event) {
     if (isDrawing) {
         const touch = event.touches[0]
-        drawDot(touch.clientX - canvasEl.offsetLeft, touch.clientY - canvasEl.offsetTop)
+        const currentX = touch.clientX - canvasEl.offsetLeft
+        const currentY = touch.clientY - canvasEl.offsetTop
+        drawLine(lastX, lastY, currentX, currentY)
+        lastX = currentX
+        lastY = currentY
     }
 
     event.preventDefault()
@@ -57,11 +70,18 @@ canvasEl.addEventListener("touchcancel", function() {
 
 
 
-function drawDot(x, y) {
+function drawPoint(x, y) {
     ctx.beginPath()
     ctx.arc(x, y, 2, 0, 2 * Math.PI)
     ctx.fillStyle = "black"
     ctx.fill()
+}
+
+function drawLine(x1, y1, x2, y2) {
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+    ctx.moveTo(x2, y2)
+    ctx.stroke()
 }
 
 clearEl.addEventListener("click", function() {
