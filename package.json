@@ -1,0 +1,22 @@
+{
+  "name": "draw",
+  "version": "1.0.0",
+  "description": "A drawing app built with HTML, CSS, and JavaScript to help users or whoever wants to quickly map out a concept or idea but doesn't have a pen and a paper handy..",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theuzomavictor/draw.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theuzomavictor/draw/issues"
+  },
+  "homepage": "https://github.com/theuzomavictor/draw#readme",
+  "devDependencies": {
+    "standard": "^17.1.2"
+  }
+}
